@@ -1,0 +1,16 @@
+FROM ubuntu:18.04
+FROM python:3.7.3
+
+WORKDIR /crawlers
+
+COPY /crawlers /crawlers
+RUN true
+COPY requirements.txt ./
+RUN pip install --no-cache-dir -r requirements.txt
+RUN apt-get update && apt-get install nano
+RUN apt-get install tmux -y
+
+ENV NAME scrapycrawler
+
+EXPOSE 80
+
